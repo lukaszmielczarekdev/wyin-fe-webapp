@@ -1,8 +1,54 @@
-const data = {
-    "content": {
-        "type": "wiki_limited_html",
-        "data": "<p class=\"mw-empty-elt\"></p><p>Year <b>1337</b> (<b>MCCCXXXVII</b>) was a common year starting on Wednesday (link will display the full calendar) of the Julian calendar.</p><h2><span id=\"Events\">Events</span></h2><h3><span id=\"January.E2.80.93December\"></span><span id=\"January–December\">January–December</span></h3><ul><li>March 16 – Edward, the Black Prince establishes the Duchy of Cornwall, becoming the first English Duke.</li><li>May 24 – Philip VI of France confiscates Gascony from English control.</li><li>August – English forces relieve Stirling Castle, ending Edward III of England's last campaign in Scotland.</li><li>October – Hundred Years' War: Edward III of England formally rejects Philip VI's claim to the French throne, initiating hostilities between France and England.</li><li>November – Battle of Cadzand: English troops raid the Flemish island of Cadzand.</li></ul><h3><span id=\"Date_unknown\">Date unknown</span></h3><ul><li>Bisham Priory is founded in England.</li><li>The Scaligeri Family loses control of Padua; Alberto della Scala, patron of the music of the Trecento, moves to Verona.</li><li>Petrarch, \"father\" of Renaissance humanism, first visits Rome to wander its mysterious ruins, with an eye for aesthetics as well as for history, exciting a renewed interest in Classical civilisation.</li><li>The Sofia Psalter is produced in Bulgaria.</li><li>The famine in China, which has lasted since 1332 and killed 6,000,000 comes to an end.</li></ul><p><br></p><h2><span id=\"Births\">Births</span></h2><ul><li>February 25 – Wenceslaus I, Duke of Luxembourg, Czech Duke of Luxembourg (d. 1383)</li><li><i>date unknown</i><ul><li>Louis II, Duke of Bourbon (d. 1410)</li><li>Jean Froissart, historian and courtier from Hainaut (d. 1405)</li><li>Bianca of Savoy, lady consort of Milan (d. 1387)</li><li>Jeong Mong-ju, Goryeo diplomat and poet (d. 1392)</li><li>Robert III of Scotland, second monarch from the House of Stewart to rule Scotland (d. 1406)</li></ul></li></ul><h2><span id=\"Deaths\">Deaths</span></h2><ul><li>January 8 – Giotto di Bondone, Italian painter (b. 1267)</li><li>June 7 – William I, Count of Hainaut (b. 1286)</li><li>June 15 – Angelo da Clareno, Italian Franciscan and leader of a group of Fraticelli (b. 1247)</li><li>June 25 – Frederick III of Sicily (b. 1272)</li><li>June 30 – Eleanor de Clare, politically active English noble (b. 1290)</li><li><i>date unknown</i><ul><li>William Frangipani, Latin Archbishop of Patras</li><li>Musa I of Mali, ruler of the Malian Empire (b. c.1280)</li><li>Prince Narinaga, Japanese Shōgun (b. 1326, d. either 1337 or 1344, the sources are contradictory)</li></ul></li></ul><h2><span id=\"References\">References</span></h2>"
+const API_PROTOCOL = 'http';
+const API_DOMAIN = 'localhost';
+const API_PORT = 8080;
+const VIEW_ID = 'view';
+const BUTTON_ID = 'submit';
+const TIME_ID = 'time';
+
+const errorBody = '<p>There was an error</p>';
+
+function getQueryString(params) {
+    const queryStrings = Object.entries(params).map(p => {
+        const [key, value] = p;
+        return `${key}=${encodeURIComponent(value)}`;
+    });
+    return queryStrings.join('&');
+}
+
+function throwOnErrorStatusCode(statusCode) {
+    if (statusCode >= 400) {
+        throw new Error(`API responded with: ${statusCode}`);
+    } else if (!statusCode) {
+        throw new Error('Woops, there is no status code');
     }
 }
 
-document.body.innerHTML = data.content.data
+async function getHistoryEvents(time) {
+    const params = { t: time };
+    const endpoint = '/history/events';
+    const qs = getQueryString(params);
+    const url = qs.length > 0 ? `${endpoint}?${qs}` : endpoint;
+    const base = `${API_PROTOCOL}://${API_DOMAIN}:${API_PORT}`;
+
+    const uri = new URL(url, base);
+    const response = await fetch(uri);
+
+    throwOnErrorStatusCode(response.status);
+    return response.json();
+}
+
+async function setView(event) {
+    const view = document.getElementById(VIEW_ID);
+    const param = document.getElementById(TIME_ID);
+
+    try {
+        const content = await getHistoryEvents(param.value);
+        view.innerHTML = content.data;
+    } catch (err) {
+        console.log(err);
+        view.innerHTML = errorBody;
+    }
+    event.preventDefault();
+}
+
+document.getElementById(BUTTON_ID).addEventListener('click', setView);

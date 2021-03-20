@@ -1,7 +1,11 @@
-import "./App.css";
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import './App.css';
 
-function App() {
-  return <h1>WHAT TIME IS NOW ?</h1>;
+class App extends Component {
+  render() {
+    return <h1>WHAT YEAR IS NOW ?</h1>;
+  }
 }
 
 export default App;

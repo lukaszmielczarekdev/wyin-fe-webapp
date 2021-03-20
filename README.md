@@ -2,13 +2,16 @@
 
 ## Table of contents
 
-- [What you need first]
+- [About the project]
+- [What you need to build th app]
 - [Getting started]
-- [What to do as a user]
-- [What to do as a developer]
 - [More info]
 
-## What you need first
+## About the project
+
+An application that displays a description of events in a given year based on the current time
+
+## What you need to build the app
 
 node.js >= 10.16
 npm >= 5.6
@@ -18,16 +21,13 @@ npm >= 5.6
 
 1. Download all the files from this repository
 2. Go to your project folder
-
-## What to do as a user
-
-1. Install production dependencies
+3. Install production dependencies
 
 ```
-npm install -only=production
+npm install --production
 ```
 
-2. Build the app
+4. Build the app
 
 ```
 npm run build
@@ -35,36 +35,13 @@ npm run build
 
 A new directory named **build** (which will include a production build of your app) will appear in your project folder
 
-## What to do as a developer
-
-1. Install all dependencies
-
-```
-npm install
-```
-
-2. How to run linter
-
-```
-npx eslint path/to/a/file
-```
-
-3. Run server
-
-```
-npm start
-```
-
-(http://localhost:3000)
-
 ## More info
 
 [How to CONTRIBUTE](./CONTRIBUTING.md)
 
 [React official site](https://reactjs.org/docs/getting-started.html)
 
-[what you need first]: #what-you-need-first
+[about the project]: #about-the-project
+[what you need to build the app]: #what-you-need-to-build-the-app
 [getting started]: #getting-started
-[what to do as a user]: #what-to-do-as-a-user
-[what to do as a developer]: #what-to-do-as-a-developer
 [more info]: #more-info

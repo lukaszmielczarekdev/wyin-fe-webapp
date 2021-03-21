@@ -3,7 +3,7 @@
 ## Table of contents
 
 - [About the project]
-- [What you need to build th app]
+- [What you need to build the app]
 - [Getting started]
 - [More info]
 

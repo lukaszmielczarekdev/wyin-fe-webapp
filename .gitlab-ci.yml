@@ -1,0 +1,25 @@
+image: node:14
+
+cache:
+  paths:
+    - node_modules
+
+stages:
+  - init
+  - lint
+  - build
+
+init:
+  stage: init
+  script:
+    npm install
+
+eslint:
+  stage: lint
+  script:
+    - node_modules/eslint/bin/eslint.js .
+
+build:
+  stage: build
+  script:
+    - npm run build

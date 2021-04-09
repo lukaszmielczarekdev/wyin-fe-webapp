@@ -17,7 +17,7 @@ init:
 eslint:
   stage: lint
   script:
-    - node_modules/eslint/bin/eslint.js .
+    - npm run lint
 
 build:
   stage: build

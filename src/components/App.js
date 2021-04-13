@@ -1,16 +1,24 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from "react";
+import MainSection from "./mainSection";
+import NavBar from "./navBar";
+import Footer from "./footer";
 import "./App.css";
-import HistoryData from "./historyData";
-import Controller from "./controller";
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Controller />
-        <HistoryData />
-      </React.Fragment>
+      <div className="app-container">
+        <div>
+          <NavBar />
+        </div>
+        <div>
+          <MainSection />
+        </div>
+        <div>
+          <Footer />
+        </div>
+      </div>
     );
   }
 }

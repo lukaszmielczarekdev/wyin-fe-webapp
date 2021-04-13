@@ -1,24 +1,22 @@
 import React, { Component } from "react";
-import ApiReqButton from "./apiReqButton";
+import "./synchronizer.css";
 
 class Synchronizer extends Component {
   state = {
     API_PROTOCOL: "http",
     API_DOMAIN: "localhost",
     API_PORT: 8080,
-    VIEW_ID: "view",
+    // VIEW_ID: "view",
     TIME_ID: "time",
-    errorBody: "<p>There was an error</p>",
+    errorBody: "There was an error",
   };
 
   render() {
     return (
-      <div>
-        <label htmlFor="time">24-clock time:</label>
-        <input type="text" id="time" />
-        <br />
-        <ApiReqButton handleSetView={this.setView} />
-        <br></br>
+      <div className="synchronizer-container">
+        <button className="btn btn--mechanism" onClick={this.setView}>
+          Check it out
+        </button>
       </div>
     );
   }
@@ -54,15 +52,17 @@ class Synchronizer extends Component {
   };
 
   setView = async () => {
-    const view = document.getElementById(this.state.VIEW_ID);
+    // const view = document.getElementById(this.state.VIEW_ID);
     const param = document.getElementById(this.state.TIME_ID);
 
     try {
       const content = await this.getHistoryEvents(param.value);
-      view.innerHTML = content.data;
+      // view.innerHTML = content.data;
+      this.props.sendContent(content.data);
     } catch (err) {
-      console.log(err);
-      view.innerHTML = this.state.errorBody;
+      // console.log(err);
+      // view.innerHTML = this.state.errorBody;
+      this.props.sendContent(this.state.errorBody);
     }
   };
 }

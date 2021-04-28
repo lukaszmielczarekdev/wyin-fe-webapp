@@ -6,8 +6,7 @@ class Synchronizer extends Component {
     API_PROTOCOL: "http",
     API_DOMAIN: "localhost",
     API_PORT: 8080,
-    // VIEW_ID: "view",
-    TIME_ID: "time",
+    CLOCK_ID: "clock",
     errorBody: "There was an error",
   };
 
@@ -39,7 +38,7 @@ class Synchronizer extends Component {
 
   getHistoryEvents = async (time) => {
     const params = { t: time };
-    const endpoint = "/history/events";
+    const endpoint = "/history/event";
     const qs = this.getQueryString(params);
     const url = qs.length > 0 ? `${endpoint}?${qs}` : endpoint;
     const base = `${this.state.API_PROTOCOL}://${this.state.API_DOMAIN}:${this.state.API_PORT}`;
@@ -52,16 +51,13 @@ class Synchronizer extends Component {
   };
 
   setView = async () => {
-    // const view = document.getElementById(this.state.VIEW_ID);
-    const param = document.getElementById(this.state.TIME_ID);
+    const clockElement = document.getElementById(this.state.CLOCK_ID);
 
     try {
-      const content = await this.getHistoryEvents(param.value);
-      // view.innerHTML = content.data;
+      const content = await this.getHistoryEvents(clockElement.textContent.trim());
       this.props.sendContent(content.data);
     } catch (err) {
-      // console.log(err);
-      // view.innerHTML = this.state.errorBody;
+      console.error(err);
       this.props.sendContent(this.state.errorBody);
     }
   };

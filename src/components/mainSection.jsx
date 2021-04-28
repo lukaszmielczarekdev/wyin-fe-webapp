@@ -15,14 +15,12 @@ class MainSection extends Component {
         <div className="grid column-left">
           <div className="grid column-left-content-container">
             <div className="clock-container">
-              <h2 className="clock">
+              <h2 id="clock" className="clock">
                 {new Date()
-                  .toLocaleTimeString([], {
+                  .toLocaleTimeString('en-GB', {
                     hour: "2-digit",
                     minute: "2-digit",
-                  })
-                  .replace("AM", "")
-                  .replace("PM", "")}
+                  })}
               </h2>
             </div>
             <div className="description-container-left display-description">

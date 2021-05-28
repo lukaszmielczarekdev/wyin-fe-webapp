@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Synchronizer from "./synchronizer";
 import HistoryData from "./historyData";
+import Clock from "./clock";
 import "./mainSection.css";
 
 class MainSection extends Component {
@@ -15,12 +16,8 @@ class MainSection extends Component {
         <div className="grid column-left">
           <div className="grid column-left-content-container">
             <div className="clock-container">
-              <h2 id="clock" className="clock">
-                {new Date()
-                  .toLocaleTimeString('en-GB', {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+              <h2 className="clock">
+                <Clock />
               </h2>
             </div>
             <div className="description-container-left display-description">

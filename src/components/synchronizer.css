@@ -1,4 +1,4 @@
-.btn {
+.btn--synchronizer {
   margin: 0.5rem;
   width: fit-content;
   border: 0;
@@ -8,28 +8,21 @@
   white-space: nowrap;
   text-align: center;
   outline-width: 0;
+  border: 1px solid black;
 }
+.btn--mechanism {
+  background-color: transparent;
+  border-radius: 3px;
+}
+
 @media screen and (min-width: 1025px) {
   .btn {
     font-size: 1.5rem;
   }
 }
 
-.btn--primary {
-  background-color: transparent;
-}
-.btn--secondary {
-  background-color: black;
-  color: white;
-  box-shadow: 0 6px 9px grey;
-}
-
-.btn--secondary:hover {
-  background-color: rgba(0, 0, 0, 0.897);
-}
-
-.btn--mechanism {
-  background-color: transparent;
-  border-radius: 3px;
-  border: 1px solid black;
+.synchronizer-container {
+  display: grid;
+  justify-items: center;
+  align-items: self-start;
 }

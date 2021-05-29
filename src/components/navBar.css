@@ -1,9 +1,32 @@
+.btn {
+  margin: 0.5rem;
+  width: fit-content;
+  border: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  white-space: nowrap;
+  text-align: center;
+  outline-width: 0;
+}
 .nav-grid {
+  background-color: rgba(255, 255, 255, 0.85);
   display: grid;
   justify-items: center;
   align-items: center;
   height: 100%;
   grid-template-columns: 1fr 3fr 1fr;
+}
+.btn--primary {
+  background-color: transparent;
+}
+.btn--secondary {
+  background-color: black;
+  color: white;
+  box-shadow: 0 6px 9px grey;
+}
+.btn--secondary:hover {
+  background-color: rgba(0, 0, 0, 0.897);
 }
 
 @media screen and (min-width: 1024px) {
@@ -68,5 +91,11 @@ h1 {
   }
   .navcolumn-show {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .btn {
+    font-size: 1.5rem;
   }
 }

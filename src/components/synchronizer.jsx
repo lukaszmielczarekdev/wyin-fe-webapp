@@ -13,8 +13,14 @@ class Synchronizer extends Component {
   render() {
     return (
       <div className="synchronizer-container">
-        <button className="btn btn--mechanism" onClick={this.setView}>
-          Check it out
+        <button
+          className="btn--synchronizer btn--mechanism"
+          onClick={() => {
+            this.setView();
+            this.props.showModal();
+          }}
+        >
+          Sprawdzam
         </button>
       </div>
     );
@@ -54,7 +60,9 @@ class Synchronizer extends Component {
     const clockElement = document.getElementById(this.state.CLOCK_ID);
 
     try {
-      const content = await this.getHistoryEvents(clockElement.textContent.trim());
+      const content = await this.getHistoryEvents(
+        clockElement.textContent.trim()
+      );
       this.props.sendContent(content.data);
     } catch (err) {
       console.error(err);

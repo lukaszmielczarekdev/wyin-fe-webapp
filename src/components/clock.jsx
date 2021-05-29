@@ -19,7 +19,7 @@ class Clock extends Component {
     });
   }
   render() {
-    return <React.Fragment id="clock">{this.state.currentTime}</React.Fragment>;
+    return <div id="clock">{this.state.currentTime}</div>;
   }
 }
 export default Clock;

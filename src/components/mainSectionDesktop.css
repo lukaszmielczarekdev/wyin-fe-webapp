@@ -1,0 +1,65 @@
+.desktop-main-container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.desktop-main-content-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: fit-content;
+  padding: 2rem;
+  height: 80%;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  align-content: center;
+  justify-content: center;
+}
+.desktop-main-content-left {
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.desktop-main-content-right {
+  min-height: fit-content;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+.desktop-clock {
+  margin: 0;
+  font-size: 6rem;
+  display: grid;
+  justify-items: center;
+}
+
+.desktop-clock-container {
+  display: grid;
+  justify-items: center;
+  align-items: self-end;
+  width: 100%;
+  height: 100%;
+}
+
+.description {
+  font-size: 2.5rem;
+  margin: 2rem;
+  padding: 1rem;
+  text-align: left;
+}
+.source {
+  margin: 2rem;
+  padding: 1rem;
+  text-align: center;
+}

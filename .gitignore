@@ -73,8 +73,8 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# dotenv local environment variables file
+.env*.local
 
 # next.js build output
 .next

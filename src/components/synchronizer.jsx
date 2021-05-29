@@ -3,9 +3,6 @@ import "./synchronizer.css";
 
 class Synchronizer extends Component {
   state = {
-    API_PROTOCOL: "http",
-    API_DOMAIN: "localhost",
-    API_PORT: 8080,
     CLOCK_ID: "clock",
     errorBody: "There was an error",
   };
@@ -47,7 +44,7 @@ class Synchronizer extends Component {
     const endpoint = "/history/event";
     const qs = this.getQueryString(params);
     const url = qs.length > 0 ? `${endpoint}?${qs}` : endpoint;
-    const base = `${this.state.API_PROTOCOL}://${this.state.API_DOMAIN}:${this.state.API_PORT}`;
+    const base = process.env.REACT_APP_WYIN_BE_FEED_API;
 
     const uri = new URL(url, base);
     const response = await fetch(uri);

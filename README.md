@@ -35,6 +35,12 @@ npm run build
 
 A new directory named **build** (which will include a production build of your app) will appear in your project folder
 
+5. Run server live
+
+```
+npm start
+```
+
 ## More info
 
 [How to CONTRIBUTE](./CONTRIBUTING.md)

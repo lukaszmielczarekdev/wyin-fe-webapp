@@ -2,6 +2,7 @@ image: node:14
 
 cache:
   paths:
+    - build
     - node_modules
 
 stages:

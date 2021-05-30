@@ -2,7 +2,7 @@
 import React from "react";
 import MainSectionDesktop from "./mainSectionDesktop";
 import MainSectionMobile from "./mainSectionMobile";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import NavBar from "./navBar";
 import Footer from "./footer";
 import "./App.css";
@@ -14,12 +14,10 @@ export default function App() {
         <NavBar />
       </div>
       <div className="component-mobile">
-        <Route path="/home" component={MainSectionMobile} />
-        <Redirect from="/" to="/home" component={MainSectionMobile} />
+        <Route path="/" component={MainSectionMobile} />
       </div>
       <div className="component-desktop">
-        <Route path="/home" component={MainSectionDesktop} />
-        <Redirect from="/" to="/home" component={MainSectionDesktop} />
+        <Route path="/" component={MainSectionDesktop} />
       </div>
       <div>
         <Footer />

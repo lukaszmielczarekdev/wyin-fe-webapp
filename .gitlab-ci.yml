@@ -45,4 +45,15 @@ deploy_ci:
     - if: '$CI_COMMIT_BRANCH == "master"'
   script:
     - cd node_modules/@cloudflare/wrangler/ && npm run postinstall && cd -
-    - CF_ACCOUNT_ID=$CF_WORKERS_ACCOUNT_ID_CI CF_API_TOKEN=$CF_WORKERS_TOKEN_CI npm run publish
+    - CF_ACCOUNT_ID=$CF_WORKERS_ACCOUNT_ID CF_API_TOKEN=$CF_WORKERS_TOKEN npx wrangler publish
+
+deploy_prd:
+  stage: deploy
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+)?$/'
+  script:
+    - echo REACT_APP_WYIN_BE_FEED_API="$WYIN_BE_FEED_API_PRD" >> .env.prd
+    - ln -sf .env.prd .env
+    - npm run build
+    - cd node_modules/@cloudflare/wrangler/ && npm run postinstall && cd -
+    - CF_ACCOUNT_ID=$CF_WORKERS_ACCOUNT_ID CF_API_TOKEN=$CF_WORKERS_TOKEN npx wrangler publish --env prd

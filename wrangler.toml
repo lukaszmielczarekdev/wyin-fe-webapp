@@ -7,6 +7,9 @@ usage_model = ''
 workers_dev = true
 target_type = "webpack"
 
+[env.prd]
+name = "app"
+
 [site]
 bucket = "build"
 entry-point = "workers-site"

@@ -1,4 +1,4 @@
-name = "wyin-fe-webapp"
+name = "app-ci"
 type = 'webpack'
 account_id = ''
 route = ''

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Synchronizer from "./synchronizer";
 import ModalMobile from "./modalMobile";
 import Clock from "./clock";
@@ -38,9 +38,11 @@ class MainSectionMobile extends Component {
               onClose={this.showModal}
               showModalStatus={this.state.modalStatus}
             />
-            <Route path="/share" component={Share} />
-            <Route path="/about" component={About} />
-            <Route path="/" exact component={Intro} />
+            <Switch>
+              <Route path="/share" component={Share} />
+              <Route path="/about" component={About} />
+              <Route path="/" component={Intro} />
+            </Switch>
           </div>
           <Synchronizer
             sendContent={this.handleSendContent}

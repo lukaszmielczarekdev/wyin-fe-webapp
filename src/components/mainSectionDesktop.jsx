@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import ModalDesktop from "./modalDesktop";
 import Synchronizer from "./synchronizer";
 import Clock from "./clock";
@@ -43,9 +43,11 @@ class MainSectionDesktop extends Component {
               onClose={this.showModal}
               showModalStatus={this.state.modalStatus}
             />
-            <Route path="/share" component={Share} />
-            <Route path="/about" component={About} />
-            <Route path="/" exact component={Intro} />
+            <Switch>
+              <Route path="/share" component={Share} />
+              <Route path="/about" component={About} />
+              <Route path="/" component={Intro} />
+            </Switch>
           </div>
         </div>
       </div>

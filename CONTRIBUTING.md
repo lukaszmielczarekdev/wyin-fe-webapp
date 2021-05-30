@@ -33,7 +33,7 @@ npm install
 4. How to run linter
 
 ```
-npx eslint path/to/a/file
+npm run lint
 ```
 
 5. Run server
@@ -43,6 +43,12 @@ npm start
 ```
 
 (http://localhost:3000)
+
+## How to use local backend
+Create `.env.local` file and add this line:
+```
+REACT_APP_WYIN_BE_FEED_API="http://localhost:8080"
+```
 
 [README](./README.md)
 

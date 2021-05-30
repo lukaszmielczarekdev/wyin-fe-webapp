@@ -14,10 +14,10 @@ const NavBar = () => {
         <img className="icon icon-hide" src={menu} alt="menu" />
       </div>
       <div className="nav-right navcolumn-hide">
-        <Link to="/home/about">
+        <Link to="/about">
           <button className="btn btn--primary">O nas</button>
         </Link>
-        <Link to="/home/share">
+        <Link to="/share">
           <button className="btn btn--secondary">Udostępniam</button>
         </Link>
       </div>

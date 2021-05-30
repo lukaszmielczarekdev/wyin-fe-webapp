@@ -43,9 +43,9 @@ class MainSectionDesktop extends Component {
               onClose={this.showModal}
               showModalStatus={this.state.modalStatus}
             />
-            <Route path="/home/share" component={Share} />
-            <Route path="/home/about" component={About} />
-            <Route path="/home" exact component={Intro} />
+            <Route path="/share" component={Share} />
+            <Route path="/about" component={About} />
+            <Route path="/" exact component={Intro} />
           </div>
         </div>
       </div>

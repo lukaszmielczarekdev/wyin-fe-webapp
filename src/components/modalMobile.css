@@ -35,13 +35,11 @@
   top: 0px;
   right: 0px;
   width: 10%;
-  /* z-index: 2; */
 }
 
 .btn--responsive-mobile {
   margin: 1rem;
-  padding: 1rem;
-  width: 12%;
+  width: 10%;
   height: auto;
 }
 
@@ -76,17 +74,59 @@
   top: 0px;
   right: 0px;
   width: 5%;
-  /* z-index: 2; */
+}
+
+.text-mobile {
+  min-height: fit-content;
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 500px) {
-  .btn--responsive-mobile {
-    width: 15%;
-  }
   .modal-mobile-clock {
     margin: 0;
     font-size: 4rem;
     display: grid;
     justify-items: center;
+  }
+  .text-mobile {
+    min-height: fit-content;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .text-mobile {
+    min-height: fit-content;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-height: 420px) {
+  .text-mobile {
+    min-height: fit-content;
+    font-size: 1rem;
+  }
+  .btn--responsive-mobile {
+    margin: 1rem;
+    width: 5%;
+    height: auto;
+  }
+  .modal-mobile-clock {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .text-mobile {
+    min-height: fit-content;
+    font-size: 1rem;
+  }
+  .btn--responsive-mobile {
+    margin: 1rem;
+    width: 5%;
+    height: auto;
+  }
+  .modal-mobile-clock {
+    font-size: 3rem;
   }
 }

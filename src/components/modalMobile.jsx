@@ -17,7 +17,7 @@ class ModalMobile extends Component {
     }
 
     return (
-      <div className="modal-mobile-window centered">
+      <section className="modal-mobile-window centered">
         <input
           className="btn--responsive-mobile btn--close-mobile"
           type="image"
@@ -39,12 +39,12 @@ class ModalMobile extends Component {
           </h2>
         </div>
         <div className="modal-content-container">
-          <article>
+          <article className="text-mobile">
             {this.props.displayContent}
             <p className="source">
               {
                 <a
-                  className="source-link"
+                  className="source-link text-mobile"
                   href={`https://pl.wikipedia.org/wiki/${new Date()
                     .toLocaleTimeString("en-GB", {
                       hour: "2-digit",
@@ -60,7 +60,7 @@ class ModalMobile extends Component {
             </p>
           </article>
         </div>
-        <div className="modal-nav-container">
+        <nav className="modal-nav-container">
           <input
             className="btn--responsive-mobile"
             type="image"
@@ -82,8 +82,8 @@ class ModalMobile extends Component {
             src={next}
             alt="--->"
           />
-        </div>
-      </div>
+        </nav>
+      </section>
     );
   }
 }

@@ -34,13 +34,12 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 5px;
-  /* z-index: 2; */
+  width: 5%;
 }
 
 .btn--responsive-desktop {
-  padding: 1rem;
-  width: 12%;
+  margin: 1rem;
+  width: 3vw;
   height: auto;
 }
 
@@ -65,4 +64,30 @@
   align-items: center;
   justify-content: center;
   align-content: center;
+}
+
+.text-desktop {
+  min-height: fit-content;
+  font-size: 2rem;
+}
+
+@media screen and (max-height: 420px) {
+  .btn--responsive-desktop {
+    margin: 1rem;
+    width: 5%;
+    height: auto;
+  }
+  .modal-desktop-clock {
+    font-size: 2rem;
+  }
+  .text-desktop {
+    font-size: 1rem;
+  }
+  .btn--close {
+    width: 3%;
+  }
+  .btn--responsive-desktop {
+    width: 5%;
+    height: auto;
+  }
 }

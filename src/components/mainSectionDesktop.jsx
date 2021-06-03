@@ -25,7 +25,7 @@ class MainSectionDesktop extends Component {
 
   render() {
     return (
-      <div className="desktop-main-container">
+      <section className="desktop-main-container">
         <div className="desktop-main-content-container">
           <div className="desktop-main-content-left">
             <h2 className="desktop-clock">
@@ -50,7 +50,7 @@ class MainSectionDesktop extends Component {
             </Switch>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

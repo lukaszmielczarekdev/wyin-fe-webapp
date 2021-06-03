@@ -25,7 +25,7 @@ class MainSectionMobile extends Component {
 
   render() {
     return (
-      <div className="grid main-container-mobile">
+      <section className="grid main-container-mobile">
         <div className="grid main-container-content">
           <div className="clock-container">
             <h2 className="clock">
@@ -49,7 +49,7 @@ class MainSectionMobile extends Component {
             showModal={this.showModal}
           />
         </div>
-      </div>
+      </section>
     );
   }
 }

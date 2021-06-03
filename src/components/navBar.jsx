@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div className="nav-grid">
+    <nav className="nav-grid">
       <div className="nav-left"></div>
       <div className="nav-central">
         <h1>WHAT YEAR IS NOW?</h1>
@@ -21,7 +21,7 @@ const NavBar = () => {
           <button className="btn btn--secondary">Udostępniam</button>
         </Link>
       </div>
-    </div>
+    </nav>
   );
 };
 

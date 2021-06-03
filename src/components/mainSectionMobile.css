@@ -12,8 +12,8 @@
 .main-container-content {
   border-radius: 15px;
   background-color: rgb(242, 242, 242, 0.85);
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   grid-template-rows: 1fr 3fr 1fr;
 }
 
@@ -42,4 +42,10 @@
   margin-bottom: 0;
   margin-top: 0;
   font-size: 5rem;
+}
+
+@media screen and (max-width: 420px) {
+  .description {
+    margin: 1rem;
+  }
 }

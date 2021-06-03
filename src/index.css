@@ -12,8 +12,15 @@ article {
   text-align: center;
 }
 
+main {
+  display: block;
+}
+
 html {
   font-size: 62.5%;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  height: -webkit-fill-available;
 }
 
 body {
@@ -29,6 +36,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 @media screen and (min-width: 1024px) {
@@ -36,6 +45,10 @@ body {
     font-size: 2rem;
     background: url(./images/background_desktop_light.jpg) no-repeat center
       center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 }
 @media screen and (min-width: 1921px) {
@@ -43,33 +56,9 @@ body {
     font-size: 2rem;
     background: url(./images/background_desktop_light_4k.jpg) no-repeat center
       center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
-}
-
-.source {
-  font-size: small;
-}
-
-.source-link:link {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.source-link:visited {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.source-link:hover {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.source-link:active {
-  color: black;
-  background-color: transparent;
-  text-decoration: underline;
 }

@@ -17,7 +17,7 @@ class ModalDesktop extends Component {
     }
 
     return (
-      <div className="modal-desktop-window centered">
+      <section className="modal-desktop-window centered">
         <input
           className="btn--responsive-desktop btn--close"
           type="image"
@@ -39,12 +39,12 @@ class ModalDesktop extends Component {
           </h2>
         </div>
         <div className="modal-content-container">
-          <article>
+          <article className="text-desktop">
             {this.props.displayContent}
             <p className="source">
               {
                 <a
-                  className="source-link"
+                  className="source-link text-desktop"
                   href={`https://pl.wikipedia.org/wiki/${new Date()
                     .toLocaleTimeString("en-GB", {
                       hour: "2-digit",
@@ -60,7 +60,7 @@ class ModalDesktop extends Component {
             </p>
           </article>
         </div>
-        <div className="modal-nav-container">
+        <nav className="modal-nav-container">
           <input
             className="btn--responsive-desktop"
             type="image"
@@ -82,8 +82,8 @@ class ModalDesktop extends Component {
             src={next}
             alt="--->"
           />
-        </div>
-      </div>
+        </nav>
+      </section>
     );
   }
 }

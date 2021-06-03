@@ -15,7 +15,7 @@
   border-radius: 3px;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
   .btn {
     font-size: 1.5rem;
   }
@@ -25,4 +25,10 @@
   display: grid;
   justify-items: center;
   align-items: self-start;
+}
+
+@media screen and (max-width: 420px) {
+  .btn--synchronizer {
+    font-size: 1.5rem;
+  }
 }

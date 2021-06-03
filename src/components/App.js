@@ -10,18 +10,14 @@ import "./App.css";
 export default function App() {
   return (
     <div className="app-container">
-      <div>
-        <NavBar />
-      </div>
-      <div className="component-mobile">
+      <NavBar />
+      <main className="component-mobile">
         <Route path="/" component={MainSectionMobile} />
-      </div>
-      <div className="component-desktop">
+      </main>
+      <main className="component-desktop">
         <Route path="/" component={MainSectionDesktop} />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

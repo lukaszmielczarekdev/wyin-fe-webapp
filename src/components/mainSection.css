@@ -1,0 +1,119 @@
+.mobile-element {
+  display: grid;
+}
+
+.desktop-element {
+  display: none;
+}
+
+.main-container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.main-content-container-mobile {
+  justify-items: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: rgb(242, 242, 242, 0.85);
+  width: 80%;
+  height: 80%;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.main-content-container-desktop {
+  grid-template-columns: 1fr 2fr;
+  min-height: fit-content;
+  padding: 2rem;
+  height: 70%;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  align-content: center;
+  justify-content: center;
+}
+
+.clock-container {
+  display: grid;
+  justify-items: center;
+  align-items: self-end;
+}
+
+.clock {
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 4rem;
+}
+.main-content-container-desktop-left {
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.synchronizer-container {
+  display: grid;
+  justify-items: center;
+  align-items: self-start;
+}
+.description-container {
+  min-height: fit-content;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.description {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 420px) {
+  .description {
+    margin: 1rem;
+  }
+}
+@media only screen and (width: 768px) and (height: 1024px) {
+  .description {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mobile-element {
+    display: none;
+  }
+  .desktop-element {
+    display: grid;
+  }
+  .clock {
+    margin: 0;
+    font-size: 6rem;
+    display: grid;
+    justify-items: center;
+  }
+  .description {
+    font-size: 2.2rem;
+    margin: 2rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .description {
+    font-size: 2.5rem;
+  }
+}

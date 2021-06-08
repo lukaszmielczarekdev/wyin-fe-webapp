@@ -4,9 +4,9 @@ import prev from "../images/prev.svg";
 import next from "../images/next.svg";
 import random from "../images/random.svg";
 import close from "../images/close.svg";
-import "./modalDesktop.css";
+import "./modal.css";
 
-class ModalDesktop extends Component {
+class Modal extends Component {
   onClose = () => {
     this.props.onClose && this.props.onClose();
   };
@@ -17,9 +17,9 @@ class ModalDesktop extends Component {
     }
 
     return (
-      <section className="modal-desktop-window centered">
+      <section className="modal-window">
         <input
-          className="btn--responsive-desktop btn--close"
+          className="btn-nav btn-close"
           type="image"
           name="close"
           src={close}
@@ -29,7 +29,7 @@ class ModalDesktop extends Component {
           }}
         />
         <div className="modal-year-container">
-          <h2 id="clock" className="modal-desktop-clock">
+          <h2 id="clock" className="modal-clock">
             {new Date()
               .toLocaleTimeString("en-GB", {
                 hour: "2-digit",
@@ -39,12 +39,12 @@ class ModalDesktop extends Component {
           </h2>
         </div>
         <div className="modal-content-container">
-          <article className="text-desktop">
+          <article className="article-text">
             {this.props.displayContent}
             <p className="source">
               {
                 <a
-                  className="source-link text-desktop"
+                  className="source-link source"
                   href={`https://pl.wikipedia.org/wiki/${new Date()
                     .toLocaleTimeString("en-GB", {
                       hour: "2-digit",
@@ -62,21 +62,21 @@ class ModalDesktop extends Component {
         </div>
         <nav className="modal-nav-container">
           <input
-            className="btn--responsive-desktop"
+            className="btn-nav"
             type="image"
             name="prev"
             src={prev}
             alt="<---"
           />
           <input
-            className="btn--responsive-desktop"
+            className="btn-nav"
             type="image"
             name="random"
             src={random}
             alt="random event"
           />
           <input
-            className="btn--responsive-desktop"
+            className="btn-nav"
             type="image"
             name="next"
             src={next}
@@ -88,4 +88,4 @@ class ModalDesktop extends Component {
   }
 }
 
-export default ModalDesktop;
+export default Modal;

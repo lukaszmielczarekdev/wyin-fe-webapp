@@ -1,0 +1,177 @@
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  min-height: fit-content;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+  width: 93%;
+  height: 80%;
+  background-color: rgba(255, 255, 255);
+  box-shadow: 0 0 25px black;
+  border-radius: 15px;
+}
+.modal-year-container {
+  min-height: fit-content;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.modal-content-container {
+  display: grid;
+  min-height: fit-content;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+}
+.modal-nav-container {
+  min-height: fit-content;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.modal-clock {
+  margin: 0;
+  font-size: 5rem;
+  display: grid;
+  justify-items: center;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10%;
+}
+.btn-nav {
+  margin: 1rem;
+  width: 3vw;
+  height: auto;
+}
+
+.article-text {
+  min-height: fit-content;
+  font-size: 2rem;
+}
+.source {
+  font-size: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+.source-link:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.source-link:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.source-link:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.source-link:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+/* Media queries */
+
+@media screen and (max-height: 420px) {
+  .btn-nav {
+    margin: 1rem;
+    width: 4vw;
+    height: auto;
+  }
+  .modal-clock {
+    font-size: 2rem;
+  }
+  .article-text {
+    font-size: 1.2rem;
+  }
+  .source {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-height: 420px) {
+  .btn-nav {
+    margin: 1rem;
+    width: 6vw;
+    height: auto;
+  }
+  .modal-clock {
+    font-size: 3rem;
+  }
+  .article-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal-window {
+    width: 80%;
+    height: 70%;
+  }
+  .btn-close {
+    width: 5%;
+  }
+  .modal-clock {
+    font-size: 4rem;
+  }
+  .source {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .source {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 700px) and (min-height: 420px) and (max-width: 1000px) {
+  .btn-nav {
+    width: 5vw;
+  }
+}
+
+@media only screen and (width: 1366px) and (height: 1024px) {
+  .article-text {
+    font-size: 2.5rem;
+  }
+  .source {
+    font-size: 2rem;
+  }
+}
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .article-text {
+    font-size: 2.5rem;
+  }
+  .source {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (width: 731px) and (height: 411px) {
+  .btn-nav {
+    width: 4vw;
+  }
+}

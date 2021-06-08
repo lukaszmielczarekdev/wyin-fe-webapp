@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import api from "../utils/api"
 import "./synchronizer.css";
 
 class Synchronizer extends Component {
@@ -23,41 +24,11 @@ class Synchronizer extends Component {
     );
   }
 
-  getQueryString = (params) => {
-    const queryStrings = Object.entries(params).map((p) => {
-      const [key, value] = p;
-      return `${key}=${encodeURIComponent(value)}`;
-    });
-    return queryStrings.join("&");
-  };
-
-  throwOnErrorStatusCode = (statusCode) => {
-    if (statusCode >= 400) {
-      throw new Error(`API responded with: ${statusCode}`);
-    } else if (!statusCode) {
-      throw new Error("Woops, there is no status code");
-    }
-  };
-
-  getHistoryEvents = async (time) => {
-    const params = { t: time };
-    const endpoint = "/history/event";
-    const qs = this.getQueryString(params);
-    const url = qs.length > 0 ? `${endpoint}?${qs}` : endpoint;
-    const base = process.env.REACT_APP_WYIN_BE_FEED_API;
-
-    const uri = new URL(url, base);
-    const response = await fetch(uri);
-
-    this.throwOnErrorStatusCode(response.status);
-    return response.json();
-  };
-
   setView = async () => {
     const clockElement = document.getElementById(this.state.CLOCK_ID);
 
     try {
-      const content = await this.getHistoryEvents(
+      const content = await api.getHistoryEvents(
         clockElement.textContent.trim()
       );
       this.props.sendContent(content);

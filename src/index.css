@@ -17,6 +17,7 @@ main {
 }
 
 html {
+  height: 100vh;
   font-size: 62.5%;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -36,8 +37,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100%;
 }
 
 @media screen and (min-width: 1024px) {

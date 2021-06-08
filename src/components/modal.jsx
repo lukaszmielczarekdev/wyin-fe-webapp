@@ -45,13 +45,7 @@ class Modal extends Component {
               {
                 <a
                   className="source-link source"
-                  href={`https://pl.wikipedia.org/wiki/${new Date()
-                    .toLocaleTimeString("en-GB", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })
-                    .split(":")
-                    .join("")}`}
+                  href={this.props.source}
                   target="_blank"
                 >
                   źródło: Wikipedia

@@ -7,14 +7,25 @@ const api = {
     const base = process.env.REACT_APP_WYIN_BE_FEED_API;
 
     const uri = new URL(url, base);
-    const response = await fetch(uri);
+    return getApiResponse(uri);
+  },
 
-    throwOnErrorStatusCode(response.status);
-    return response.json();
+  getHistoryRandomEvent: async () => {
+    const endpoint = "/history/event/random";
+    const base = process.env.REACT_APP_WYIN_BE_FEED_API;
+
+    const uri = new URL(endpoint, base);
+    return getApiResponse(uri);
   },
 };
 
 export default api;
+
+async function getApiResponse(uri) {
+    const response = await fetch(uri);
+    throwOnErrorStatusCode(response.status);
+    return response.json();
+}
 
 function getQueryString(params) {
   const queryStrings = Object.entries(params).map((p) => {

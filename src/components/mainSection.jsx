@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Synchronizer from "./synchronizer";
+import Emitter from "../utils/emitter";
 import Modal from "./modal";
 import Clock from "./clock";
 import Share from "./share";
@@ -19,9 +20,15 @@ class MainSection extends Component {
     });
   };
 
-  handleSendContent = (toSend) => {
-    this.setState({ ...toSend });
-  };
+  componentDidMount() {
+      Emitter.on('SEND_CONTENT', (toSend) => {
+      this.setState({ ...toSend });
+    });
+  }
+
+  componentWillUnmount() {
+    Emitter.removeListener('SEND_CONTENT');
+  }
 
   render() {
     return (
@@ -40,7 +47,6 @@ class MainSection extends Component {
             </Switch>
           </div>
           <Synchronizer
-            sendContent={this.handleSendContent}
             showModal={this.showModal}
           />
         </div>
@@ -51,7 +57,6 @@ class MainSection extends Component {
             </h2>
             <Synchronizer
               showModal={this.showModal}
-              sendContent={this.handleSendContent}
             />
           </div>
           <div className="description-container">
@@ -64,6 +69,7 @@ class MainSection extends Component {
         </div>
         <Modal
           displayContent={this.state.data}
+          displayYear={this.state.year}
           source={this.state.source}
           onClose={this.showModal}
           showModalStatus={this.state.modalStatus}

@@ -20,7 +20,7 @@ class MainSection extends Component {
   };
 
   handleSendContent = (toSend) => {
-    this.setState({ description: toSend });
+    this.setState({ ...toSend });
   };
 
   render() {
@@ -63,7 +63,8 @@ class MainSection extends Component {
           </div>
         </div>
         <Modal
-          displayContent={this.state.description}
+          displayContent={this.state.data}
+          source={this.state.source}
           onClose={this.showModal}
           showModalStatus={this.state.modalStatus}
         />

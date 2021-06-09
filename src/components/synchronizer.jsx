@@ -60,10 +60,10 @@ class Synchronizer extends Component {
       const content = await this.getHistoryEvents(
         clockElement.textContent.trim()
       );
-      this.props.sendContent(content.data);
+      this.props.sendContent(content);
     } catch (err) {
       console.error(err);
-      this.props.sendContent(this.state.errorBody);
+      this.props.sendContent({ data: this.state.errorBody });
     }
   };
 }

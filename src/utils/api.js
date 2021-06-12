@@ -17,14 +17,22 @@ const api = {
     const uri = new URL(endpoint, base);
     return getApiResponse(uri);
   },
+
+  getHistoryYearEvent: async (year) => {
+    const endpoint = `/history/event/${year}`;
+    const base = process.env.REACT_APP_WYIN_BE_FEED_API;
+
+    const uri = new URL(endpoint, base);
+    return getApiResponse(uri);
+  },
 };
 
 export default api;
 
 async function getApiResponse(uri) {
-    const response = await fetch(uri);
-    throwOnErrorStatusCode(response.status);
-    return response.json();
+  const response = await fetch(uri);
+  throwOnErrorStatusCode(response.status);
+  return response.json();
 }
 
 function getQueryString(params) {

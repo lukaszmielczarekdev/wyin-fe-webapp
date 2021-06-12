@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
-import api from "../utils/api"
+import api from "../utils/api";
 import Emitter from "../utils/emitter";
 import prev from "../images/prev.svg";
 import next from "../images/next.svg";
@@ -20,29 +20,44 @@ class Modal extends Component {
 
   setViewForSynchronizer = async () => {
     const clockElement = document.getElementById(this.state.CLOCK_ID);
-    await this.handleRequest(api.getHistoryEvents(clockElement.textContent.trim()));
+    await this.handleRequest(
+      api.getHistoryEvents(clockElement.textContent.trim())
+    );
   };
 
   setViewForRandom = async () => {
     await this.handleRequest(api.getHistoryRandomEvent());
   };
 
+  setViewForYear = async (year) => {
+    await this.handleRequest(api.getHistoryYearEvent(year));
+  };
+
   handleRequest = async (requestPromise) => {
     try {
       const content = await requestPromise;
-      Emitter.emit('SEND_CONTENT', content);
+      Emitter.emit("SEND_CONTENT", content);
     } catch (err) {
       console.error(err);
-      Emitter.emit('SEND_CONTENT', { data: this.state.errorBody });
+      Emitter.emit("SEND_CONTENT", { data: this.state.errorBody });
+    }
+  };
+
+  selectedYearModeSelector = (mode) => {
+    const selectedYear = this.props.selectedYear;
+    if (mode === "prev") {
+      return selectedYear - 1;
+    } else if (mode === "next") {
+      return selectedYear + 1;
     }
   };
 
   componentDidMount() {
-    Emitter.on('SYNCHRONIZE', this.setViewForSynchronizer);
+    Emitter.on("SYNCHRONIZE", this.setViewForSynchronizer);
   }
 
   componentWillUnmount() {
-    Emitter.removeListener('SYNCHRONIZE');
+    Emitter.removeListener("SYNCHRONIZE");
   }
 
   render() {
@@ -90,6 +105,9 @@ class Modal extends Component {
             name="prev"
             src={prev}
             alt="<---"
+            onClick={() => {
+              this.setViewForYear(this.selectedYearModeSelector("prev"));
+            }}
           />
           <input
             className="btn-nav"
@@ -107,6 +125,9 @@ class Modal extends Component {
             name="next"
             src={next}
             alt="--->"
+            onClick={() => {
+              this.setViewForYear(this.selectedYearModeSelector("next"));
+            }}
           />
         </nav>
       </section>

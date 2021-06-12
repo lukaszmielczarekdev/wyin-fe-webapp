@@ -21,13 +21,13 @@ class MainSection extends Component {
   };
 
   componentDidMount() {
-      Emitter.on('SEND_CONTENT', (toSend) => {
+    Emitter.on("SEND_CONTENT", (toSend) => {
       this.setState({ ...toSend });
     });
   }
 
   componentWillUnmount() {
-    Emitter.removeListener('SEND_CONTENT');
+    Emitter.removeListener("SEND_CONTENT");
   }
 
   render() {
@@ -46,18 +46,14 @@ class MainSection extends Component {
               <Route path="/" component={Intro} />
             </Switch>
           </div>
-          <Synchronizer
-            showModal={this.showModal}
-          />
+          <Synchronizer showModal={this.showModal} />
         </div>
         <div className="main-content-container-desktop desktop-element">
           <div className="main-content-container-desktop-left">
             <h2 className="clock">
               <Clock />
             </h2>
-            <Synchronizer
-              showModal={this.showModal}
-            />
+            <Synchronizer showModal={this.showModal} />
           </div>
           <div className="description-container">
             <Switch>
@@ -73,6 +69,7 @@ class MainSection extends Component {
           source={this.state.source}
           onClose={this.showModal}
           showModalStatus={this.state.modalStatus}
+          selectedYear={this.state.year}
         />
       </section>
     );

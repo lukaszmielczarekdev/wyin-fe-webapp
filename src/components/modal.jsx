@@ -4,6 +4,8 @@ import api from "../utils/api";
 import Emitter from "../utils/emitter";
 import prev from "../images/prev.svg";
 import next from "../images/next.svg";
+import prev_inactive from "../images/prev_inactive.svg";
+import next_inactive from "../images/next_inactive.svg";
 import random from "../images/random.svg";
 import close from "../images/close.svg";
 import "./modal.css";
@@ -52,6 +54,56 @@ class Modal extends Component {
     }
   };
 
+  renderPrevButton() {
+    if (this.props.selectedYear <= 1)
+      return (
+        <input
+          className="btn-nav"
+          type="image"
+          name="prev_inactive"
+          src={prev_inactive}
+          alt="<---"
+        />
+      );
+    return (
+      <input
+        className="btn-nav"
+        type="image"
+        name="prev"
+        src={prev}
+        alt="<---"
+        onClick={() => {
+          this.setViewForYear(this.selectedYearModeSelector("prev"));
+        }}
+      />
+    );
+  }
+  renderNextButton() {
+    const year = new Date().getFullYear();
+    if (this.props.selectedYear >= year)
+      return (
+        <input
+          className="btn-nav"
+          type="image"
+          name="next_inactive"
+          src={next_inactive}
+          alt="--->"
+        />
+      );
+    return (
+      <input
+        className="btn-nav"
+        type="image"
+        name="next"
+        src={next}
+        alt="<---"
+        onClick={() => {
+          this.setViewForYear(this.selectedYearModeSelector("next"));
+        }}
+      />
+    );
+  }
+
   componentDidMount() {
     Emitter.on("SYNCHRONIZE", this.setViewForSynchronizer);
   }
@@ -99,16 +151,7 @@ class Modal extends Component {
           </article>
         </div>
         <nav className="modal-nav-container">
-          <input
-            className="btn-nav"
-            type="image"
-            name="prev"
-            src={prev}
-            alt="<---"
-            onClick={() => {
-              this.setViewForYear(this.selectedYearModeSelector("prev"));
-            }}
-          />
+          {this.renderPrevButton()}
           <input
             className="btn-nav"
             type="image"
@@ -119,16 +162,7 @@ class Modal extends Component {
               this.setViewForRandom();
             }}
           />
-          <input
-            className="btn-nav"
-            type="image"
-            name="next"
-            src={next}
-            alt="--->"
-            onClick={() => {
-              this.setViewForYear(this.selectedYearModeSelector("next"));
-            }}
-          />
+          {this.renderNextButton()}
         </nav>
       </section>
     );

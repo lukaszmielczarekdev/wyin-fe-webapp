@@ -53,11 +53,13 @@
   width: 10%;
 }
 .btn-nav {
+  cursor: pointer;
   margin: 1rem;
   width: 3vw;
   height: auto;
 }
 .btn-search {
+  cursor: pointer;
   margin: 1rem;
   width: 2vw;
   height: auto;

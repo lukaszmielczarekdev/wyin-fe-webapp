@@ -9,6 +9,7 @@ import next_inactive from "../images/next_inactive.svg";
 import random from "../images/random.svg";
 import close from "../images/close.svg";
 import google_logo from "../images/google_logo.svg";
+import clipboard from "../images/clipboard.svg";
 
 import "./modal.css";
 
@@ -60,6 +61,9 @@ class Modal extends Component {
     const base = "https://www.google.com/search?q=";
     return `${base}${encodeURIComponent(content)}`;
   }
+  copyContentToClipboard = () => {
+    navigator.clipboard.writeText(this.props.displayContent);
+  };
 
   renderPrevButton() {
     if (this.props.selectedYear <= 1)
@@ -165,6 +169,14 @@ class Modal extends Component {
                 alt="Google search"
               />
             </a>
+            <img
+              className="btn-search"
+              src={clipboard}
+              alt="copy to clipboard"
+              onClick={() => {
+                this.copyContentToClipboard();
+              }}
+            />
           </article>
         </div>
         <nav className="modal-nav-container">

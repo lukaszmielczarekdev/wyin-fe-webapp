@@ -23,6 +23,13 @@
   justify-items: center;
   align-items: center;
 }
+.modal-category-container {
+  min-height: fit-content;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .modal-content-container {
   display: grid;
   min-height: fit-content;
@@ -42,6 +49,12 @@
 .modal-clock {
   margin: 0;
   font-size: 5rem;
+  display: grid;
+  justify-items: center;
+}
+.modal-category {
+  margin: 0;
+  font-size: 3rem;
   display: grid;
   justify-items: center;
 }
@@ -114,6 +127,9 @@
   .modal-clock {
     font-size: 2rem;
   }
+  .modal-category {
+    font-size: 1.5rem;
+  }
   .article-text {
     font-size: 1.2rem;
   }
@@ -136,6 +152,9 @@
   .modal-clock {
     font-size: 3rem;
   }
+  .modal-category {
+    font-size: 2rem;
+  }
   .article-text {
     font-size: 1.5rem;
   }
@@ -151,6 +170,9 @@
   }
   .modal-clock {
     font-size: 4rem;
+  }
+  .modal-category {
+    font-size: 2.5rem;
   }
   .source {
     font-size: 1.5rem;

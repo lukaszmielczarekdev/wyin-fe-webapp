@@ -8,6 +8,8 @@ import prev_inactive from "../images/prev_inactive.svg";
 import next_inactive from "../images/next_inactive.svg";
 import random from "../images/random.svg";
 import close from "../images/close.svg";
+import google_logo from "../images/google_logo.svg";
+
 import "./modal.css";
 
 class Modal extends Component {
@@ -53,6 +55,11 @@ class Modal extends Component {
       return selectedYear + 1;
     }
   };
+
+  createGoogleSearchLink(content) {
+    const base = "https://www.google.com/search?q=";
+    return `${base}${encodeURIComponent(content)}`;
+  }
 
   renderPrevButton() {
     if (this.props.selectedYear <= 1)
@@ -148,6 +155,16 @@ class Modal extends Component {
                 </a>
               }
             </p>
+            <a
+              href={this.createGoogleSearchLink(this.props.displayContent)}
+              target="_blank"
+            >
+              <img
+                className="btn-search"
+                src={google_logo}
+                alt="Google search"
+              />
+            </a>
           </article>
         </div>
         <nav className="modal-nav-container">

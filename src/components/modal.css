@@ -30,7 +30,6 @@
   justify-content: center;
   justify-items: center;
   align-items: center;
-  padding: 2rem;
 }
 .modal-nav-container {
   min-height: fit-content;
@@ -56,6 +55,11 @@
 .btn-nav {
   margin: 1rem;
   width: 3vw;
+  height: auto;
+}
+.btn-search {
+  margin: 1rem;
+  width: 2vw;
   height: auto;
 }
 
@@ -100,6 +104,11 @@
     width: 4vw;
     height: auto;
   }
+  .btn-search {
+    margin: 1rem;
+    width: 3vw;
+    height: auto;
+  }
   .modal-clock {
     font-size: 2rem;
   }
@@ -115,6 +124,11 @@
   .btn-nav {
     margin: 1rem;
     width: 6vw;
+    height: auto;
+  }
+  .btn-search {
+    margin: 1rem;
+    width: 5vw;
     height: auto;
   }
   .modal-clock {
@@ -151,6 +165,11 @@
   .btn-nav {
     width: 5vw;
   }
+  .btn-search {
+    margin: 1rem;
+    width: 4vw;
+    height: auto;
+  }
 }
 
 @media only screen and (width: 1366px) and (height: 1024px) {
@@ -173,5 +192,10 @@
 @media only screen and (width: 731px) and (height: 411px) {
   .btn-nav {
     width: 4vw;
+  }
+  .btn-search {
+    margin: 1rem;
+    width: 3vw;
+    height: auto;
   }
 }

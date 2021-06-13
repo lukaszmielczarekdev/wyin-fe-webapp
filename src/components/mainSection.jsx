@@ -66,6 +66,7 @@ class MainSection extends Component {
         <Modal
           displayContent={this.state.data}
           displayYear={this.state.year}
+          displayCategory={this.state.category}
           source={this.state.source}
           onClose={this.showModal}
           showModalStatus={this.state.modalStatus}

@@ -145,12 +145,10 @@ class Modal extends Component {
             {this.props.displayYear}
           </h2>
         </div>
-        <div className="modal-category-container">
-          <h3 id="category" className="modal-category">
+        <div className="modal-content-container">
+          <h3 id="category" className="article-text category-name">
             {this.props.displayCategory}
           </h3>
-        </div>
-        <div className="modal-content-container">
           <article className="article-text">
             {this.props.displayContent}
             <p className="source">

@@ -16,7 +16,6 @@ import "./modal.css";
 class Modal extends Component {
   state = {
     CLOCK_ID: "clock",
-    errorBody: "There was an error",
   };
 
   onClose = () => {
@@ -44,7 +43,11 @@ class Modal extends Component {
       Emitter.emit("SEND_CONTENT", content);
     } catch (err) {
       console.error(err);
-      Emitter.emit("SEND_CONTENT", { data: this.state.errorBody });
+      Emitter.emit("SEND_CONTENT", {
+        code: true,
+        connectionProblem: true,
+        source: false,
+      });
     }
   };
 
@@ -63,6 +66,52 @@ class Modal extends Component {
   }
   copyContentToClipboard = () => {
     navigator.clipboard.writeText(this.props.displayContent);
+  };
+
+  renderSource = () => {
+    if (!this.props.error || this.props.source) {
+      return (
+        <p className="source">
+          {
+            <a
+              className="source-link source"
+              href={this.props.source}
+              target="_blank"
+            >
+              źródło: Wikipedia
+            </a>
+          }
+        </p>
+      );
+    }
+  };
+
+  renderCopyButton = () => {
+    if (!this.props.error) {
+      return (
+        <img
+          className="btn-search"
+          src={clipboard}
+          alt="copy to clipboard"
+          onClick={() => {
+            this.copyContentToClipboard();
+          }}
+        />
+      );
+    }
+  };
+
+  renderSearchButton = () => {
+    if (!this.props.error) {
+      return (
+        <a
+          href={this.createGoogleSearchLink(this.props.displayContent)}
+          target="_blank"
+        >
+          <img className="btn-search" src={google_logo} alt="Google search" />
+        </a>
+      );
+    }
   };
 
   renderPrevButton() {
@@ -125,7 +174,7 @@ class Modal extends Component {
 
   render() {
     if (!this.props.showModalStatus) {
-      return null;
+      return false;
     }
 
     return (
@@ -151,35 +200,9 @@ class Modal extends Component {
           </h3>
           <article className="article-text">
             {this.props.displayContent}
-            <p className="source">
-              {
-                <a
-                  className="source-link source"
-                  href={this.props.source}
-                  target="_blank"
-                >
-                  źródło: Wikipedia
-                </a>
-              }
-            </p>
-            <a
-              href={this.createGoogleSearchLink(this.props.displayContent)}
-              target="_blank"
-            >
-              <img
-                className="btn-search"
-                src={google_logo}
-                alt="Google search"
-              />
-            </a>
-            <img
-              className="btn-search"
-              src={clipboard}
-              alt="copy to clipboard"
-              onClick={() => {
-                this.copyContentToClipboard();
-              }}
-            />
+            {this.renderSource()}
+            {this.renderSearchButton()}
+            {this.renderCopyButton()}
           </article>
         </div>
         <nav className="modal-nav-container">

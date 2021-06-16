@@ -44,7 +44,9 @@ function getQueryString(params) {
 }
 
 function throwOnErrorStatusCode(statusCode) {
-  if (statusCode >= 400) {
+  if (statusCode === 404) {
+    return false;
+  } else if (statusCode >= 400) {
     throw new Error(`API responded with: ${statusCode}`);
   } else if (!statusCode) {
     throw new Error("Woops, there is no status code");

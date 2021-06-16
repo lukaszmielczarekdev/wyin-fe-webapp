@@ -12,6 +12,13 @@ import "./mainSection.css";
 class MainSection extends Component {
   state = {
     modalStatus: false,
+    zeroYear: {
+      content:
+        "Rok zerowy nie występuje w powszechnie stosowanym do numeracji lat kalendarzu gregoriańskim i w jego poprzedniku, kalendarzu juliańskim. W tym systemie po roku 1 p.n.e. następuje rok 1 n.e. Jednak rok zerowy istnieje w astronomicznej numeracji lat (gdzie pokrywa się z rokiem 1 p.n.e. według kalendarza juliańskiego) i w ISO 8601:2004 (gdzie pokrywa się z rokiem 1 p.n.e. według kalendarza gregoriańskiego), a także w większości buddyjskich i hinduskich kalendarzy.",
+      link: "https://pl.wikipedia.org/wiki/Rok_zerowy",
+    },
+    errorBody:
+      "Niestety wygląda na to, że w Wikipedii jeszcze nie ma informacji o tym roku. Spróbuj wylosować nowe wydarzenie.",
   };
 
   showModal = () => {
@@ -22,7 +29,28 @@ class MainSection extends Component {
 
   componentDidMount() {
     Emitter.on("SEND_CONTENT", (toSend) => {
-      this.setState({ ...toSend });
+      if (toSend.code && toSend.code !== "NF002") {
+        this.setState({
+          data: this.state.errorBody,
+          year: toSend.year,
+          category: false,
+          source: false,
+          error: true,
+        });
+      } else if (toSend.code && toSend.code === "NF002") {
+        this.setState({
+          data: this.state.zeroYear.content,
+          source: this.state.zeroYear.link,
+          year: 0,
+          error: true,
+          category: false,
+        });
+      } else if (!toSend.code) {
+        this.setState({ ...toSend, error: false });
+      }
+      if (toSend.connectionProblem) {
+        this.setState({ data: "There was an error" });
+      }
     });
   }
 
@@ -71,6 +99,7 @@ class MainSection extends Component {
           onClose={this.showModal}
           showModalStatus={this.state.modalStatus}
           selectedYear={this.state.year}
+          error={this.state.error}
         />
       </section>
     );

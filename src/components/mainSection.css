@@ -18,6 +18,8 @@
   justify-items: center;
   align-items: center;
   border-radius: 15px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: rgb(242, 242, 242, 0.85);
   width: 80%;
   height: 80%;
@@ -45,8 +47,9 @@
 .clock {
   margin-bottom: 0;
   margin-top: 0;
-  font-size: 4rem;
+  font-size: 3rem;
 }
+
 .main-content-container-desktop-left {
   min-height: fit-content;
   display: flex;

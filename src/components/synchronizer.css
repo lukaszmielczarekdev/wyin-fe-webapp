@@ -10,6 +10,9 @@
   outline-width: 0;
   border: 1px solid black;
 }
+.btn--synchronizer:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
 .btn--mechanism {
   background-color: transparent;
   border-radius: 3px;
@@ -29,6 +32,13 @@
 @media screen and (max-width: 420px) {
   .btn--synchronizer {
     font-size: 1.5rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+@media screen and (max-height: 420px) {
+  .btn--synchronizer {
+    font-size: 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 @media screen and (min-width: 1600px) {

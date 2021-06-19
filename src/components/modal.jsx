@@ -11,11 +11,14 @@ import close from "../images/close.svg";
 import google_logo from "../images/google_logo.svg";
 import clipboard from "../images/clipboard.svg";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 import "./modal.css";
 
 class Modal extends Component {
   state = {
     CLOCK_ID: "clock",
+    loading: true,
   };
 
   onClose = () => {
@@ -172,6 +175,38 @@ class Modal extends Component {
     Emitter.removeListener("SYNCHRONIZE");
   }
 
+  renderContentOrSpinner(content, size) {
+    return content ? (
+      <React.Fragment>
+        <div className="modal-year-container">
+          <h2 id="clock" className="modal-clock">
+            {this.props.displayYear}
+          </h2>
+        </div>
+        <div className="modal-content-container">
+          <h3 id="category" className="article-text category-name">
+            {this.props.displayCategory}
+          </h3>
+          <article className="article-text">
+            {this.props.displayContent}
+            {this.renderSource()}
+            {this.renderSearchButton()}
+            {this.renderCopyButton()}
+          </article>
+        </div>
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <div></div>
+        <ClipLoader
+          loading={this.state.loading}
+          size={size}
+          speedMultiplier={1}
+        />
+      </React.Fragment>
+    );
+  }
+
   render() {
     if (!this.props.showModalStatus) {
       return false;
@@ -189,22 +224,7 @@ class Modal extends Component {
             this.onClose();
           }}
         />
-        <div className="modal-year-container">
-          <h2 id="clock" className="modal-clock">
-            {this.props.displayYear}
-          </h2>
-        </div>
-        <div className="modal-content-container">
-          <h3 id="category" className="article-text category-name">
-            {this.props.displayCategory}
-          </h3>
-          <article className="article-text">
-            {this.props.displayContent}
-            {this.renderSource()}
-            {this.renderSearchButton()}
-            {this.renderCopyButton()}
-          </article>
-        </div>
+        {this.renderContentOrSpinner(this.props.displayContent, "8vw")}
         <nav className="modal-nav-container">
           {this.renderPrevButton()}
           <input

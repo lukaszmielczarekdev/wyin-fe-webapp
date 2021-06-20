@@ -13,6 +13,7 @@
     "react-scripts": "4.0.3",
     "react-share": "^4.4.0",
     "react-spinners": "^0.11.0",
+    "react-toastify": "^7.0.4",
     "web-vitals": "^1.1.0"
   },
   "devDependencies": {

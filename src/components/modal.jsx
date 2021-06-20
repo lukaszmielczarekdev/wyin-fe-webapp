@@ -18,6 +18,7 @@ import "./modal.css";
 class Modal extends Component {
   state = {
     CLOCK_ID: "clock",
+    SUBMIT_ID: "submitYear",
     loading: true,
   };
 
@@ -38,6 +39,11 @@ class Modal extends Component {
 
   setViewForYear = async (year) => {
     await this.handleRequest(api.getHistoryYearEvent(year));
+  };
+
+  setViewForManualYear = async () => {
+    const inputElement = document.getElementById(this.state.SUBMIT_ID);
+    await this.handleRequest(api.getHistoryYearEvent(inputElement.value));
   };
 
   handleRequest = async (requestPromise) => {
@@ -121,7 +127,7 @@ class Modal extends Component {
   };
 
   renderPrevButton() {
-    if (this.props.selectedYear <= 1)
+    if (this.props.selectedYear < 1)
       return (
         <input
           className="btn-nav"
@@ -215,6 +221,10 @@ class Modal extends Component {
             {this.renderSource()}
             {this.renderSearchButton()}
             {this.renderCopyButton()}
+            <form className="year-input-field">
+              <input type="number" min="0" max="2021" id="submitYear" />
+            </form>
+            <button onClick={() => this.setViewForManualYear()}>wyślij</button>
           </article>
         </div>
       </React.Fragment>

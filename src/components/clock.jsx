@@ -4,6 +4,7 @@ class Clock extends Component {
   state = {};
 
   componentDidMount() {
+    this.updateClock();
     this.currentTime = setInterval(() => this.updateClock(), 1000);
   }
   componentWillUnmount() {

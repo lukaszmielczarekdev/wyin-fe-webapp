@@ -42,6 +42,7 @@ class Modal extends Component {
 
   handleRequest = async (requestPromise) => {
     try {
+      this.setState({ loading: true });
       const content = await requestPromise;
       Emitter.emit("SEND_CONTENT", content);
     } catch (err) {
@@ -51,6 +52,8 @@ class Modal extends Component {
         connectionProblem: true,
         source: false,
       });
+    } finally {
+      this.setState({ loading: false });
     }
   };
 
@@ -141,6 +144,7 @@ class Modal extends Component {
       />
     );
   }
+
   renderNextButton() {
     const year = new Date().getFullYear();
     if (this.props.selectedYear >= year)
@@ -167,6 +171,25 @@ class Modal extends Component {
     );
   }
 
+  renderNavigation() {
+    return (
+      <nav className="modal-nav-container">
+        {this.renderPrevButton()}
+        <input
+          className="btn-nav"
+          type="image"
+          name="random"
+          src={random}
+          alt="random event"
+          onClick={() => {
+            this.setViewForRandom();
+          }}
+        />
+        {this.renderNextButton()}
+      </nav>
+    );
+  }
+
   componentDidMount() {
     Emitter.on("SYNCHRONIZE", this.setViewForSynchronizer);
   }
@@ -175,8 +198,8 @@ class Modal extends Component {
     Emitter.removeListener("SYNCHRONIZE");
   }
 
-  renderContentOrSpinner(content, size) {
-    return content ? (
+  renderContent(content) {
+    return (
       <React.Fragment>
         <div className="modal-year-container">
           <h2 id="clock" className="modal-clock">
@@ -195,7 +218,11 @@ class Modal extends Component {
           </article>
         </div>
       </React.Fragment>
-    ) : (
+    );
+  }
+
+  renderSpinner(size = "8vw") {
+    return (
       <React.Fragment>
         <div></div>
         <ClipLoader
@@ -224,21 +251,9 @@ class Modal extends Component {
             this.onClose();
           }}
         />
-        {this.renderContentOrSpinner(this.props.displayContent, "8vw")}
-        <nav className="modal-nav-container">
-          {this.renderPrevButton()}
-          <input
-            className="btn-nav"
-            type="image"
-            name="random"
-            src={random}
-            alt="random event"
-            onClick={() => {
-              this.setViewForRandom();
-            }}
-          />
-          {this.renderNextButton()}
-        </nav>
+        {this.state.loading && this.renderSpinner("8vw")}
+        {!this.state.loading && this.renderContent(this.props.displayContent)}
+        {!this.state.loading && this.renderNavigation()}
       </section>
     );
   }

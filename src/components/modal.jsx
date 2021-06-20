@@ -195,7 +195,7 @@ class Modal extends Component {
   }
 
   componentWillUnmount() {
-    Emitter.removeListener("SYNCHRONIZE");
+    Emitter.off("SYNCHRONIZE");
   }
 
   renderContent(content) {

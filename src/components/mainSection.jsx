@@ -55,7 +55,7 @@ class MainSection extends Component {
   }
 
   componentWillUnmount() {
-    Emitter.removeListener("SEND_CONTENT");
+    Emitter.off("SEND_CONTENT");
   }
 
   render() {

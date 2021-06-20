@@ -2,23 +2,40 @@ import React from "react";
 import "./about.css";
 
 const About = () => {
-  return (
-    <article className="description-container">
-      <p className=" about-text">
+  function renderIntroduction() {
+    return (
+      <p className="about-text">
+        <h2 className="about-header-text-h2">O nas</h2>
         Jesteśmy grupą studentów studiów podyplomowych na Politechnice
         Poznańskiej, których połączyła pasja do nauki i technologii.
         <br /> <br />
         What Year Is Now? (WYIN) to aplikacja open-source, dzięki której
-        odkrywanie historii świata przestaje być nudne.
-        <br />
-        <br />
-        Zespół WYIN <br />
-        <ul>
+        odkrywanie historii świata staje się jeszcze ciekawsze.
+        <h3 className="about-header-text-h3">Kontakt</h3>
+        Jeżeli masz pytania, sugestie bądź wykryłeś błąd, 
+        <a
+          rel="noreferrer"
+          href="https://gitlab.com/spio-wyin/wyin-fe-webapp/-/issues"
+          target="_blank"
+          className="about-link"
+        >
+          skontaktuj się z nami.
+        </a>
+      </p>
+    );
+  }
+
+  function renderTeamInfo() {
+    return (
+      <p className="about-text">
+        <h3 className="about-header-text-h3">Zespół WYIN</h3>
+        <ul className="about-list align-text-left">
           <li>
             <a
               rel="noreferrer"
               href="https://www.linkedin.com/in/listewnik/"
               target="_blank"
+              className="about-link"
             >
               Mariusz Listewnik
             </a>
@@ -30,6 +47,7 @@ const About = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/9a177d16f0768546609dd8c813508e3c36a8cd1ada6bfb9f77168bae5d0e0b39/"
               target="_blank"
+              className="about-link"
             >
               Jakub Kołodziejczak
             </a>{" "}
@@ -41,11 +59,11 @@ const About = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/%C5%82ukasz-mielczarek-6282aa214/"
               target="_blank"
+              className="about-link"
             >
               Łukasz Mielczarek
             </a>{" "}
-             - frontend developer z niesamowitymi umiejętnościami dbający o
-            estetykę aplikacji
+             - frontend developer z wizją, ogromną pasją i entuzjazmem
           </li>
           <br />
           <li>
@@ -53,6 +71,7 @@ const About = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/leszek-d%C4%85bek-226ba41b3/"
               target="_blank"
+              className="about-link"
             >
               Leszek Dąbek
             </a>{" "}
@@ -64,6 +83,7 @@ const About = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/robert-marecki/"
               target="_blank"
+              className="about-link"
             >
               Robert Marecki
             </a>
@@ -75,6 +95,7 @@ const About = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/karolina-kolyszko/"
               target="_blank"
+              className="about-link"
             >
               Karolina Kołyszko
             </a>{" "}
@@ -82,19 +103,23 @@ const About = () => {
           </li>
           <br />
         </ul>
-        Kontakt
-        <br />
-        <br /> Jeżeli masz pytania, sugestie bądź wykryłeś błąd, skontaktuj się
-        z nami - 
-        <a
-          rel="noreferrer"
-          href="https://gitlab.com/spio-wyin/wyin-fe-webapp/-/issues"
-          target="_blank"
-        >
-          Gitlab
-        </a>
       </p>
-    </article>
+    );
+  }
+
+  return (
+    <section className="main-container">
+      <article className="main-content-container-mobile mobile-element">
+        <div className="clock-container">{renderIntroduction()}</div>
+        <div className="description-container-about">{renderTeamInfo()}</div>
+      </article>
+      <article className="main-content-container-desktop desktop-element">
+        <div className="main-content-container-desktop-left">
+          {renderIntroduction()}
+        </div>
+        <div className="description-container-about">{renderTeamInfo()}</div>
+      </article>
+    </section>
   );
 };
 

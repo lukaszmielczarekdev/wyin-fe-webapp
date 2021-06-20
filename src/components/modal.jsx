@@ -109,7 +109,7 @@ class Modal extends Component {
           alt="copy to clipboard"
           onClick={() => {
             this.copyContentToClipboard();
-            toast.info(`Skopiowano wydażenie dla roku ${this.props.selectedYear}`);
+            toast.info(`Skopiowano wydarzenie dla roku ${this.props.selectedYear}`);
           }}
         />
       );

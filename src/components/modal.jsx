@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
+import { toast } from 'react-toastify';
 import api from "../utils/api";
 import Emitter from "../utils/emitter";
 import prev from "../images/prev.svg";
@@ -108,6 +109,7 @@ class Modal extends Component {
           alt="copy to clipboard"
           onClick={() => {
             this.copyContentToClipboard();
+            toast.info(`Skopiowano wydażenie dla roku ${this.props.selectedYear}`);
           }}
         />
       );

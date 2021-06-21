@@ -199,6 +199,17 @@ class Modal extends Component {
     );
   }
 
+  renderYearInput() {
+      return (
+          <React.Fragment>
+            <form id={this.state.SUBMIT_FORM_ID} className="year-input-field" onSubmit={this.setViewForManualYear}>
+              <input type="number" min="0" max="2021" id={this.state.YEAR_INPUT_ID} />
+            </form>
+            <button form={this.state.SUBMIT_FORM_ID}>wyślij</button>
+          </React.Fragment>
+      );
+  }
+
   componentDidMount() {
     Emitter.on("SYNCHRONIZE", this.setViewForSynchronizer);
   }
@@ -224,10 +235,7 @@ class Modal extends Component {
             {this.renderSource()}
             {this.renderSearchButton()}
             {this.renderCopyButton()}
-            <form id={this.state.SUBMIT_FORM_ID} className="year-input-field" onSubmit={this.setViewForManualYear}>
-              <input type="number" min="0" max="2021" id={this.state.YEAR_INPUT_ID} />
-            </form>
-            <button form={this.state.SUBMIT_FORM_ID}>wyślij</button>
+            {process.env.REACT_APP_DEPLOY_ENV === "ci" && this.renderYearInput()}
           </article>
         </div>
       </React.Fragment>

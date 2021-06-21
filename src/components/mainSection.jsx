@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Synchronizer from "./synchronizer";
 import Emitter from "../utils/emitter";
+import disableScroll from "disable-scroll";
 import Modal from "./modal";
 import Clock from "./clock";
 import Share from "./share";
@@ -18,10 +19,11 @@ class MainSection extends Component {
       link: "https://pl.wikipedia.org/wiki/Rok_zerowy",
     },
     errorBody:
-      "Niestety wygląda na to, że w Wikipedii jeszcze nie ma informacji o tym roku. Spróbuj wylosować nowe wydarzenie.",
+      "Niestety wygląda na to, że w Wikipedii jeszcze nie ma informacji o tym roku. Spróbuj wylosować lub wybrać nowe wydarzenie.",
   };
 
   showModal = () => {
+    disableScroll.on();
     this.setState({
       modalStatus: !this.state.modalStatus,
     });

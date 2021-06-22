@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import api from "../utils/api";
 import Emitter from "../utils/emitter";
 import prev from "../images/prev.svg";
@@ -11,21 +11,30 @@ import random from "../images/random.svg";
 import close from "../images/close.svg";
 import google_logo from "../images/google_logo.svg";
 import clipboard from "../images/clipboard.svg";
-
+import search from "../images/search.svg";
 import ClipLoader from "react-spinners/ClipLoader";
-
+import FormWindow from "./formWindow";
+import disableScroll from "disable-scroll";
 import "./modal.css";
 
 class Modal extends Component {
   state = {
     CLOCK_ID: "clock",
+    loading: true,
+    formWindowStatus: false,
     SUBMIT_FORM_ID: "submitYearForm",
     YEAR_INPUT_ID: "submitYearInput",
-    loading: true,
   };
 
   onClose = () => {
     this.props.onClose && this.props.onClose();
+    disableScroll.off();
+  };
+
+  showformWindow = () => {
+    this.setState({
+      formWindowStatus: !this.state.formWindowStatus,
+    });
   };
 
   setViewForSynchronizer = async () => {
@@ -45,7 +54,8 @@ class Modal extends Component {
 
   setViewForManualYear = async () => {
     const inputElement = document.getElementById(this.state.YEAR_INPUT_ID);
-    await this.handleRequest(api.getHistoryYearEvent(inputElement.value));
+    const inputValue = inputElement.value ? inputElement.value : 0;
+    await this.handleRequest(api.getHistoryYearEvent(inputValue));
   };
 
   handleRequest = async (requestPromise) => {
@@ -109,7 +119,9 @@ class Modal extends Component {
           alt="copy to clipboard"
           onClick={() => {
             this.copyContentToClipboard();
-            toast.info(`Skopiowano wydarzenie dla roku ${this.props.selectedYear}`);
+            toast.info(
+              `Skopiowano wydarzenie dla roku ${this.props.selectedYear}`
+            );
           }}
         />
       );
@@ -130,7 +142,10 @@ class Modal extends Component {
   };
 
   renderPrevButton() {
-    if (this.props.selectedYear < 1)
+    if (
+      (this.props.selectedYear < 1) |
+      (this.props.selectedYear > new Date().getFullYear() + 1)
+    )
       return (
         <input
           className="btn-nav"
@@ -190,24 +205,11 @@ class Modal extends Component {
           name="random"
           src={random}
           alt="random event"
-          onClick={() => {
-            this.setViewForRandom();
-          }}
+          onClick={this.setViewForRandom}
         />
         {this.renderNextButton()}
       </nav>
     );
-  }
-
-  renderYearInput() {
-      return (
-          <React.Fragment>
-            <form id={this.state.SUBMIT_FORM_ID} className="year-input-field" onSubmit={this.setViewForManualYear}>
-              <input type="number" min="0" max="2021" id={this.state.YEAR_INPUT_ID} />
-            </form>
-            <button form={this.state.SUBMIT_FORM_ID}>wyślij</button>
-          </React.Fragment>
-      );
   }
 
   componentDidMount() {
@@ -217,6 +219,19 @@ class Modal extends Component {
   componentWillUnmount() {
     Emitter.off("SYNCHRONIZE");
   }
+
+  renderManual = () => {
+    return (
+      <input
+        className="btn-search"
+        type="image"
+        name="manualYearInput"
+        src={search}
+        alt="manual year input"
+        onClick={this.showformWindow}
+      />
+    );
+  };
 
   renderContent(content) {
     return (
@@ -232,10 +247,12 @@ class Modal extends Component {
           </h3>
           <article className="article-text">
             {this.props.displayContent}
-            {this.renderSource()}
-            {this.renderSearchButton()}
-            {this.renderCopyButton()}
-            {process.env.REACT_APP_DEPLOY_ENV === "ci" && this.renderYearInput()}
+            <div>
+              {this.renderSource()}
+              {this.renderSearchButton()}
+              {this.renderCopyButton()}
+              {this.renderManual()}
+            </div>
           </article>
         </div>
       </React.Fragment>
@@ -261,21 +278,26 @@ class Modal extends Component {
     }
 
     return (
-      <section className="modal-window">
-        <input
-          className="btn-nav btn-close"
-          type="image"
-          name="close"
-          src={close}
-          alt="<---"
-          onClick={() => {
-            this.onClose();
-          }}
-        />
-        {this.state.loading && this.renderSpinner("8vw")}
-        {!this.state.loading && this.renderContent(this.props.displayContent)}
-        {!this.state.loading && this.renderNavigation()}
-      </section>
+      <div className="modal-window-background">
+        <section className="modal-window">
+          <input
+            className="btn-nav btn-close"
+            type="image"
+            name="close"
+            src={close}
+            alt="x"
+            onClick={this.onClose}
+          />
+          {this.state.loading && this.renderSpinner("8vw")}
+          {!this.state.loading && this.renderContent(this.props.displayContent)}
+          {!this.state.loading && this.renderNavigation()}
+          <FormWindow
+            status={this.state.formWindowStatus}
+            onCloseWindow={this.showformWindow}
+            setViewForManualYear={this.setViewForManualYear}
+          />
+        </section>
+      </div>
     );
   }
 }

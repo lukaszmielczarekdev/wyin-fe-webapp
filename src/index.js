@@ -4,6 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./components/App";
 
+const $WYIN = { version: process.env.REACT_APP_VERSION };
+window.$WYIN = $WYIN;
+
 ReactDOM.render(
   <BrowserRouter>
     <App />

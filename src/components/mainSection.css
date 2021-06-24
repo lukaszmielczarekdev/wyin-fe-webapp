@@ -128,3 +128,11 @@
     font-size: 3rem;
   }
 }
+@media screen and (min-width: 2500px) {
+  .description {
+    font-size: 4rem;
+  }
+  .clock {
+    font-size: 10rem;
+  }
+}

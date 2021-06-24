@@ -90,6 +90,7 @@
 .article-text {
   min-height: fit-content;
   font-size: 2rem;
+  padding: 0.5rem;
 }
 .source {
   font-size: 1rem;
@@ -101,25 +102,51 @@
 .source-link:link {
   color: black;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .source-link:visited {
   color: black;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .source-link:hover {
   color: black;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .source-link:active {
   color: black;
   background-color: transparent;
   text-decoration: underline;
+}
+
+/* copy pop-up */
+.Toastify__toast--info {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.Toastify__toast-body {
+  padding: 1rem;
+  color: black;
+}
+.Toastify__close-button {
+  display: none;
+}
+.Toastify {
+  position: absolute;
+}
+.Toastify__toast {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.Toastify__toast-container--bottom-left,
+.Toastify__toast-container--bottom-center,
+.Toastify__toast-container--bottom-right {
+  bottom: 0;
+  transform: translateX(0);
 }
 /* Media queries */
 

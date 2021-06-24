@@ -4,7 +4,7 @@ import "./about.css";
 const About = () => {
   function renderIntroduction() {
     return (
-      <p className="about-text">
+      <article className="description-about">
         <h2 className="about-header-text-h2">O nas</h2>
         Jesteśmy grupą studentów studiów podyplomowych na Politechnice
         Poznańskiej, których połączyła pasja do nauki i technologii.
@@ -12,7 +12,7 @@ const About = () => {
         What Year Is Now? (WYIN) to aplikacja open-source, dzięki której
         odkrywanie historii świata staje się jeszcze ciekawsze.
         <h3 className="about-header-text-h3">Kontakt</h3>
-        Jeżeli masz pytania, sugestie bądź wykryłeś błąd, 
+        Jeżeli masz pytania, sugestie bądź wykryłeś błąd,&nbsp;
         <a
           rel="noreferrer"
           href="https://gitlab.com/spio-wyin/wyin-fe-webapp/-/issues"
@@ -21,13 +21,13 @@ const About = () => {
         >
           skontaktuj się z nami.
         </a>
-      </p>
+      </article>
     );
   }
 
   function renderTeamInfo() {
     return (
-      <p className="about-text">
+      <article className="description-about">
         <h3 className="about-header-text-h3">Zespół WYIN</h3>
         <ul className="about-list align-text-left">
           <li>
@@ -103,21 +103,27 @@ const About = () => {
           </li>
           <br />
         </ul>
-      </p>
+      </article>
     );
   }
 
   return (
     <section className="main-container">
-      <article className="main-content-container-mobile mobile-element">
-        <div className="clock-container">{renderIntroduction()}</div>
-        <div className="description-container-about">{renderTeamInfo()}</div>
-      </article>
-      <article className="main-content-container-desktop desktop-element">
-        <div className="main-content-container-desktop-left">
+      <article className="about-content-container-mobile mobile-element">
+        <div className="description-container-about">
           {renderIntroduction()}
         </div>
-        <div className="description-container-about">{renderTeamInfo()}</div>
+        <div className="description-container-about border-top">
+          {renderTeamInfo()}
+        </div>
+      </article>
+      <article className="about-content-container-desktop desktop-element">
+        <div className="description-container-about">
+          {renderIntroduction()}
+        </div>
+        <div className="description-container-about border-left">
+          {renderTeamInfo()}
+        </div>
       </article>
     </section>
   );

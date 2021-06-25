@@ -45,13 +45,13 @@ const About = () => {
           <li>
             <a
               rel="noreferrer"
-              href="https://www.linkedin.com/in/9a177d16f0768546609dd8c813508e3c36a8cd1ada6bfb9f77168bae5d0e0b39/"
+              href="https://www.linkedin.com/in/karolina-kolyszko/"
               target="_blank"
               className="about-link"
             >
-              Jakub Kołodziejczak
+              Karolina Kołyszko
             </a>{" "}
-             - techniczny guru projektu
+             - analityk dbający o wymagania projektowe, spójną wizję i atmosferę w projekcie
           </li>{" "}
           <br />
           <li>
@@ -93,13 +93,13 @@ const About = () => {
           <li>
             <a
               rel="noreferrer"
-              href="https://www.linkedin.com/in/karolina-kolyszko/"
+              href="https://www.linkedin.com/in/9a177d16f0768546609dd8c813508e3c36a8cd1ada6bfb9f77168bae5d0e0b39/"
               target="_blank"
               className="about-link"
             >
-              Karolina Kołyszko
+              Jakub Kołodziejczak
             </a>{" "}
-             - analityk dbający o całokształt i atmosferę w projekcie
+             - techniczny guru projektu
           </li>
           <br />
         </ul>

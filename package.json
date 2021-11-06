@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.0",
-    "@spio-wyin/wyin-sdk-feed": "^0.1.1",
+    "@spio-wyin/wyin-sdk-feed": "^0.2.0",
     "disable-scroll": "^0.6.0",
     "eventemitter3": "^4.0.7",
     "react": "^17.0.1",

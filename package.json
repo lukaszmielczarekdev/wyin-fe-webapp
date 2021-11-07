@@ -1,10 +1,10 @@
 {
   "name": "wyin",
-  "version": "0.1.0",
+  "version": "0.0.0-versioned-by-git-tags",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.0",
-    "@spio-wyin/wyin-sdk-feed": "^1.0.1",
+    "@spio-wyin/wyin-sdk-feed": "^2.0.0",
     "disable-scroll": "^0.6.0",
     "eventemitter3": "^4.0.7",
     "react": "^17.0.1",

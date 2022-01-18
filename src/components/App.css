@@ -4,3 +4,70 @@
   width: 100vw;
   grid-template-rows: 7fr 86fr 7fr;
 }
+
+/* background */
+@media screen and (min-width: 1921px) {
+  .no-webp body {
+    background: url(/src/images/background/background_light_3840.jpg);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .webp body {
+    background: url(/src/images/background/background_light_3840.webp);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+@media screen and (max-width: 1920px) {
+  .no-webp body {
+    background: url(/src/images/background/background_light_1920.jpg);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .webp body {
+    background: url(/src/images/background/background_light_1920.webp);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .no-webp body {
+    background: url(/src/images/background/background_light_1280.jpg);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .webp body {
+    background: url(/src/images/background/background_light_1280.webp);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .no-webp body {
+    background: url(/src/images/background/background_light_960.jpg);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .webp body {
+    background: url(/src/images/background/background_light_960.webp);
+    overflow: scroll;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

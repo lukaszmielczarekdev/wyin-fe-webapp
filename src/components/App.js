@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="app-container">
       <NavBar />
-      <main>
+      <main className="main-container">
         <Switch>
           <Route path="/about" component={About} />
           <Route path="/" component={MainSection} />

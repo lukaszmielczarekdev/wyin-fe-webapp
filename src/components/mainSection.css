@@ -18,8 +18,8 @@
   justify-items: center;
   align-items: center;
   border-radius: 15px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 2rem;
+  margin: 2rem;
   background-color: rgb(242, 242, 242, 0.85);
   width: 80%;
   height: 80%;

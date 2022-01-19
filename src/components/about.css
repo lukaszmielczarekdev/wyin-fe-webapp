@@ -50,6 +50,7 @@
   width: 80%;
   height: 80%;
   grid-template-rows: 1fr 1fr;
+  margin: 2rem;
 }
 .about-content-container-desktop {
   grid-template-columns: 1fr 2fr;

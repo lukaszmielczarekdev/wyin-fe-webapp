@@ -19,7 +19,10 @@
   align-items: center;
   border-radius: 15px;
   padding: 2rem;
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   background-color: rgb(242, 242, 242, 0.85);
   width: 80%;
   height: 80%;

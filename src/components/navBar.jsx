@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./navBar.css";
-import menu from "../images/menu.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     const checkIfClickedOutsideList = (e) => {
       if (isOpen && ref.current && !ref.current.contains(e.target)) {
@@ -18,53 +18,40 @@ const NavBar = () => {
     };
   }, [isOpen]);
 
+  const handleClick = () => setIsOpen(!isOpen);
+
   return (
-    <nav className="nav-grid" ref={ref}>
-      <div className="nav-left"></div>
-      <div className="nav-central">
-        <Link
-          className="navbar-link logo"
-          onClick={() => setIsOpen(false)}
-          to="/"
-        >
-          <h1>WHAT YEAR IS NOW?</h1>
-        </Link>
-      </div>
-      <div className="nav-right navcolumn-show">
-        <img
-          className="icon icon-hide"
-          src={menu}
-          alt="menu"
-          onClick={() => setIsOpen(!isOpen)}
-        />
-      </div>
-      {isOpen && (
-        <div className="collapsible navcolumn-show">
-          {/* <Link
+    <div id="navbar-wrapper" ref={ref}>
+      <div id="navbar-items" className="text-center">
+        <i></i>
+        <div>
+          <NavLink
             className="navbar-link"
-            to="/share"
             onClick={() => setIsOpen(false)}
+            to="/"
           >
-            Udostępniam
-          </Link> */}
-          <Link
-            className="navbar-link"
-            to="/about"
-            onClick={() => setIsOpen(false)}
-          >
-            O nas
-          </Link>
+            <h1 className="nav-logo">WHAT YEAR IS NOW?</h1>
+          </NavLink>
         </div>
-      )}
-      <div className="nav-right navcolumn-hide">
-        <Link to="/about">
-          <button className="btn btn--primary">O nas</button>
-        </Link>
-        {/* <Link to="/share">
-          <button className="btn btn--secondary">Udostępniam</button>
-        </Link> */}
+        <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
+          <li className="nav-links menu">
+            <NavLink
+              onClick={() => setIsOpen(false)}
+              className="navbar-link"
+              to="/about"
+            >
+              O nas
+            </NavLink>
+          </li>
+        </ul>
+        <i
+          onClick={handleClick}
+          className={
+            isOpen ? "menu-icon fas fa-times" : "menu-icon fas fa-bars"
+          }
+        ></i>
       </div>
-    </nav>
+    </div>
   );
 };
 
